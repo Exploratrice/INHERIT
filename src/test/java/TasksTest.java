@@ -21,7 +21,7 @@ public class TasksTest {
     }
     @Test
     public void testEpicMatches() {
-        Epic epic = new Epic(55, "Молоко, Яйца, Хлеб");
+        Epic epic = new Epic(55, new String[]{"Молоко, Яйца, Хлеб"});
 
         boolean actual = epic.matches("Молоко");
         boolean expected = true;
@@ -30,7 +30,7 @@ public class TasksTest {
     }
     @Test
     public void testEpicNotMatches() {
-        Epic epic = new Epic(55, "Молоко, Яйца, Хлеб");
+        Epic epic = new Epic(55, new String[]{"Молоко, Яйца, Хлеб"});
 
         boolean actual = epic.matches("Мясо");
         boolean expected = false;
@@ -39,7 +39,12 @@ public class TasksTest {
     }
     @Test
     public void testMeetingTopicMatches() {
-        Meeting meeting = new Meeting(555, "Выкатка 3й версии приложения");
+        Meeting meeting = new Meeting(
+                555,
+                "Выкатка 3й версии приложения",
+                "Приложение НетоБанка",
+                "Во вторник после обеда"
+        );
 
         boolean actual = meeting.matches("Выкатка");
         boolean expected = true;
@@ -48,7 +53,12 @@ public class TasksTest {
     }
     @Test
     public void testMeetingProjectMatches() {
-        Meeting meeting = new Meeting(555, "Приложение НетоБанка");
+        Meeting meeting = new Meeting(
+                555,
+                "Выкатка 3й версии приложения",
+                "Приложение НетоБанка",
+                "Во вторник после обеда"
+        );
 
         boolean actual = meeting.matches("Приложение");
         boolean expected = true;
@@ -57,7 +67,12 @@ public class TasksTest {
     }
     @Test
     public void testMeetingNotMatches() {
-        Meeting meeting = new Meeting(555, "Выкатка 3й версии приложения");
+        Meeting meeting = new Meeting(
+                555,
+                "Выкатка 3й версии приложения",
+                "Приложение НетоБанка",
+                "Во вторник после обеда"
+        );
 
         boolean actual = meeting.matches("Сайт");
         boolean expected = false;
